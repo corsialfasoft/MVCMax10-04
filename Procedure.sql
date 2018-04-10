@@ -18,3 +18,10 @@ as
 	else 
 	Insert into OrdiniProdotti (Ordini_Id,Prodotti_Id,quantita) values (@idOrdine,@idProdotto,@Quantita)
 	go;
+
+	Insert into ProdottiSet (descrizione,quantita) values ('Staffa U',1000)
+	Insert into ProdottiSet (descrizione,quantita) values ('Staffa L',1000)
+	Insert into ProdottiSet (descrizione,quantita) values ('Staffa X',1000)
+	Insert into ProdottiSet (descrizione,quantita) values ('Staffa D',1000)
+
+	Select * from ProdottiSet

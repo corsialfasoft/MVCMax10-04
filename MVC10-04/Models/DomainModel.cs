@@ -55,6 +55,7 @@ namespace MVC10_04.Models
 				if (ricerca != null) {
 					trovato.ID = ricerca.Id;
 					trovato.Descrizione = ricerca.descrizione;
+					trovato.Giacenza=ricerca.quantita;
 				}
 				return trovato;
 			}
@@ -73,7 +74,7 @@ namespace MVC10_04.Models
 			set {_descrizione= value;}
 		}
 		private int _giacenza;
-		public int Giancenza {
+		public int Giacenza {
 			get { return _giacenza;}
 			set { _giacenza = value;}
 		}

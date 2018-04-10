@@ -1,0 +1,27 @@
+﻿
+@{
+    ViewBag.Title = "Risultato";
+}
+
+<h2>Risultato</h2>
+@using(Html.BeginForm("Risultato","Home",FormMethod.Get)) {
+
+}
+@using(Html.BeginForm("Risultato","Home",FormMethod.Get)) {
+    <div class="col-md-4">Codice</div>
+    <div class="col-md-4">Descrizione</div>
+    <div class="col-md-4">Giacenza</div>
+    <br />
+    <div class="col-md-4">@ViewBag.Prodotto.ID</div>
+    <div class="col-md-4">@ViewBag.Prodotto.Descrizione</div>
+    <div class="col-md-4">@ViewBag.Prodotto.Giacenza</div>
+    <br />
+    <br />
+}
+@using(Html.BeginForm("AggiungiAlCarrello","Home",FormMethod.Post)) {
+    <div>
+        <h5>Qta Richiesta</h5> <input type="text" name="quantita" placeholder="Inserisci la quantità">
+        <button>Aggiungi al Carrello</button>
+    </div>
+}
+

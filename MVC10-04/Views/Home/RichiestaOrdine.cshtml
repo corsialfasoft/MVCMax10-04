@@ -1,0 +1,12 @@
+﻿@{
+    ViewBag.Title = "Richiesta Ordine";
+}
+<h2>@ViewBag.Title.</h2>
+<h3>@ViewBag.Message</h3>
+<div>
+    @using (Html.BeginForm("RichiestaOrdine","Home",FormMethod.Post)){ //in questo momento 1 actionName, nome controller , tipo di azione (get,post etc)
+    <input type="text" value="" placeholder="Inserisci il codice" name="codice" />
+    <input type="text" value="" placeholder="Inserisci una descrizione" name="descrizione" />
+    <button>Cerca</button>
+    }
+</div>
