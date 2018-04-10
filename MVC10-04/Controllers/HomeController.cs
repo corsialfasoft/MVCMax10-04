@@ -31,21 +31,31 @@ namespace MVC10_04.Controllers
 		//{
 		//	List <Ordine> ordine = Session["ordini"] as List<Ordine>;
 		//}
+		public ActionResult GetDescrizione(int id)
+		{
+			DomainModel db = new DomainModel();
+			ViewBag.Prodotto = db.SearchById(id);
+			return View("Risultato");
+		}
 		[HttpPost]
 		public ActionResult RichiestaOrdine(string codice, string descrizione)
 		{
 			DomainModel db = new DomainModel();
 			int cod;
-			if(codice != null && int.TryParse(codice,out cod)) {
+			if(codice != "" && int.TryParse(codice,out cod)) {
 				Prodotto prodotto = db.SearchById(cod);
 				if (prodotto == null) {
 					ViewBag.Message=$"Non è stato trovato alcun prodotto avente codice {cod}";
-					return View("Risultato");
+					return View();
 				} 
 				ViewBag.Prodotto = prodotto;
-				}
-			 return View("Risultato");
+				 return View("Risultato");
+			} else {
+				List<Prodotto> prodotti = db.SearchByDescription(descrizione);
+				if (prodotti == null) {return View("Risultato");}
+					ViewBag.Prodotti = prodotti;
+					return View("RisultatoLista");
 			}
 		}
-
+	}
 }

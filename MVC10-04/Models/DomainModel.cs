@@ -96,5 +96,10 @@ namespace MVC10_04.Models
 			get { return _quantita;}
 			set { _quantita= value;}
 		}
+		public Ordine(int IdProdotto,int quantita)
+		{
+			this._idProdotto=IdProdotto;
+			this._quantita = quantita;
+		}
 	}
 }

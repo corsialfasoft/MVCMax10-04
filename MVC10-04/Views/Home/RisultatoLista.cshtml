@@ -1,0 +1,17 @@
+﻿@using MVC10_04.Models;
+@{
+    ViewBag.Title = "RisultatoLista";
+}
+
+<h2>RisultatoLista</h2>
+
+    <div class="col-md-4">Codice</div>
+    <div class="col-md-4">Descrizione</div>
+    <div class="col-md-4">Dettagli</div>
+    @foreach(Prodotto prodotto in ViewBag.Prodotti) {
+        <div class="col-md-4">@prodotto.ID</div>
+        <div class="col-md-4">@prodotto.Descrizione</div>
+        <div class="col-md-4"><button><a href="/Home/GetDescrizione/@prodotto.ID">Visualizza</a></button></div>
+        <br />
+    }
+
