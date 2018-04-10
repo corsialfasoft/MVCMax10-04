@@ -237,6 +237,7 @@
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Home\Risultato.cshtml" />
     <Content Include="Views\Home\RisultatoLista.cshtml" />
+    <Content Include="Views\Home\Carrello.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

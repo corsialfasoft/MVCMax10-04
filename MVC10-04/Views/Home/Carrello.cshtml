@@ -1,0 +1,21 @@
+﻿@using MVC10_04.Models;
+@{
+    ViewBag.Title = "Carrello";
+}
+
+<h2>Carrello</h2>
+<div>
+    <div class="col-md-4">Codice Prodotto</div>
+    <div class="col-md-4">Quantità</div><br />
+    @if (ViewBag.Ordini != null) {
+        foreach(Ordine ordine in ViewBag.Ordini) {
+            <div class="col-md-4">@ordine.IdProdotto</div>
+            <div class="col-md-4">@ordine.Quantita</div>
+            <br />
+        }
+    }else{ 
+        <h2>Carrello Vuoto!</h2>
+        }</div>
+<div><button><a href="/Home/Svuota">Svuota</a></button></div>
+<div><button>Compra</button></div>
+

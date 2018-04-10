@@ -18,8 +18,9 @@
     <br />
     <br />
 }
-@using(Html.BeginForm("AggiungiAlCarrello","Home",FormMethod.Post)) {
+@using(Html.BeginForm("AddToCarrello","Home",FormMethod.Post)) {
     <div>
+        <input type="hidden" name="id" value="@ViewBag.Prodotto.ID" />  
         <h5>Qta Richiesta</h5> <input type="text" name="quantita" placeholder="Inserisci la quantità">
         <button>Aggiungi al Carrello</button>
     </div>
