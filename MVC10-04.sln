@@ -10,6 +10,7 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{3E05FDE3-D136-4774-BD0D-969DB40025DC}"
 	ProjectSection(SolutionItems) = preProject
 		..\..\..\Downloads\Model1.edmx.sql = ..\..\..\Downloads\Model1.edmx.sql
+		Procedure.sql = Procedure.sql
 	EndProjectSection
 EndProject
 Global

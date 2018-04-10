@@ -12,6 +12,8 @@ namespace MVC10_04
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
+    using System.Data.Entity.Core.Objects;
+    using System.Linq;
     
     public partial class OrdiniEntities : DbContext
     {
@@ -28,5 +30,31 @@ namespace MVC10_04
         public virtual DbSet<OrdiniProdotti> OrdiniProdotti { get; set; }
         public virtual DbSet<OrdiniSet> OrdiniSet { get; set; }
         public virtual DbSet<ProdottiSet> ProdottiSet { get; set; }
+    
+        public virtual int ConfermaOrdine(Nullable<int> idOrdine, Nullable<int> idProdotto, Nullable<int> quantita)
+        {
+            var idOrdineParameter = idOrdine.HasValue ?
+                new ObjectParameter("idOrdine", idOrdine) :
+                new ObjectParameter("idOrdine", typeof(int));
+    
+            var idProdottoParameter = idProdotto.HasValue ?
+                new ObjectParameter("idProdotto", idProdotto) :
+                new ObjectParameter("idProdotto", typeof(int));
+    
+            var quantitaParameter = quantita.HasValue ?
+                new ObjectParameter("Quantita", quantita) :
+                new ObjectParameter("Quantita", typeof(int));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction("ConfermaOrdine", idOrdineParameter, idProdottoParameter, quantitaParameter);
+        }
+    
+        public virtual ObjectResult<Nullable<decimal>> DaiOrdine(Nullable<System.DateTime> data)
+        {
+            var dataParameter = data.HasValue ?
+                new ObjectParameter("data", data) :
+                new ObjectParameter("data", typeof(System.DateTime));
+    
+            return ((IObjectContextAdapter)this).ObjectContext.ExecuteFunction<Nullable<decimal>>("DaiOrdine", dataParameter);
+        }
     }
 }

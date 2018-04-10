@@ -9,19 +9,25 @@ namespace MVC10_04.Models
 	{
 		Prodotto SearchById(int id);
 		List<Prodotto> SearchByDescription(string descrizione);
-		void AddCarrello (Prodotto p,int quantità);
+		//void AddCarrello (Prodotto p,int quantità);
 		void Ordina(List<Ordine> ordini);
 	}
 	public partial class DomainModel : IDomainModel
 	{
-		public void AddCarrello(Prodotto p,int quantità)
-		{
-			throw new NotImplementedException();
-		}
+		//public void AddCarrello(Prodotto p,int quantità)
+		//{
+		//	throw new NotImplementedException();
+		//}
 
 		public void Ordina(List<Ordine> ordini)
 		{
-			throw new NotImplementedException();
+			using (var db=new OrdiniEntities()) {
+				int ordine = Convert.ToInt32(db.DaiOrdine(DateTime.Now));
+				foreach (Ordine element in ordini) {
+					db.ConfermaOrdine(ordine,element.IdProdotto,element.Quantita);
+				}
+				db.SaveChanges();
+			}
 		}
 
 		public List<Prodotto> SearchByDescription(string descrizione)
@@ -31,7 +37,7 @@ namespace MVC10_04.Models
 				var query = from product in db.ProdottiSet 
 							where product.descrizione.Contains(descrizione)
 							select product;
-				foreach (var element in query) { 
+				foreach (ProdottiSet element in query) { 
 					Prodotto x = new Prodotto();
 					x.ID=element.Id;
 					x.Descrizione=element.descrizione;
